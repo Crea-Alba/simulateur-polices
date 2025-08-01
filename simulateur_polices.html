@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulateur de polices d'écriture</title>
-  <!-- Importation des polices Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lobster&family=Montserrat:wght@400;700&family=Pacifico&family=Dancing+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Importation des polices -->
+  <!-- Polices depuis Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Polices depuis cdnfonts.com (vérifiez les licences pour un usage commercial) -->
+  <link href="https://fonts.cdnfonts.com/css/adellia" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/saylora" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/atomic-robusta-personal-use" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      /* Police par défaut pour le corps du document */
+      font-family: sans-serif;
       background: #f5f5f5;
       margin: 0;
       padding: 0;
@@ -91,18 +97,14 @@
   </div>
 
   <script>
-    // Liste des polices à tester et leurs noms d'affichage
+    // Liste des polices à tester (5 polices sélectionnées par l'utilisateur)
+    // Assurez-vous de disposer des droits nécessaires pour utiliser ces polices.
     const fonts = [
-      {family: 'Roboto', displayName: 'Roboto'},
-      {family: 'Open Sans', displayName: 'Open Sans'},
-      {family: 'Lobster', displayName: 'Lobster'},
-      {family: 'Montserrat', displayName: 'Montserrat'},
-      {family: 'Pacifico', displayName: 'Pacifico'},
+      {family: 'Adellia', displayName: 'Adellia'},
       {family: 'Dancing Script', displayName: 'Dancing Script'},
-      {family: 'Playfair Display', displayName: 'Playfair Display'},
-      {family: 'Courier New', displayName: 'Courier New'},
-      {family: 'Times New Roman', displayName: 'Times New Roman'},
-      {family: 'Arial', displayName: 'Arial'}
+      {family: 'saylora', displayName: 'Saylora'},
+      {family: 'Atomic Robusta - Personal Use', displayName: 'Atomic Robusta'},
+      {family: 'Pacifico', displayName: 'Pacifico'}
     ];
 
     const textInput = document.getElementById('text-input');
