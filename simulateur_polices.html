@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur de polices d'écriture</title>
+  <!-- Importation des polices Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lobster&family=Montserrat:wght@400;700&family=Pacifico&family=Dancing+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #673AB7;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .input-area {
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .fonts-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .font-preview {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .font-preview h2 {
+      margin: 0 0 10px;
+      font-size: 1.1em;
+      color: #555;
+    }
+    .font-preview p {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    @media (min-width: 600px) {
+      .fonts-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Simulateur de polices d'écriture</h1>
+    <p>Entrez une phrase pour voir son rendu avec différentes polices.</p>
+  </header>
+
+  <div class="container">
+    <div class="input-area">
+      <label for="text-input">Phrase à tester :</label>
+      <input type="text" id="text-input" placeholder="Entrez votre texte ici" value="La police est la voix de vos mots...">
+    </div>
+
+    <div class="fonts-list" id="fonts-list">
+      <!-- Les aperçus seront générés par JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Liste des polices à tester et leurs noms d'affichage
+    const fonts = [
+      {family: 'Roboto', displayName: 'Roboto'},
+      {family: 'Open Sans', displayName: 'Open Sans'},
+      {family: 'Lobster', displayName: 'Lobster'},
+      {family: 'Montserrat', displayName: 'Montserrat'},
+      {family: 'Pacifico', displayName: 'Pacifico'},
+      {family: 'Dancing Script', displayName: 'Dancing Script'},
+      {family: 'Playfair Display', displayName: 'Playfair Display'},
+      {family: 'Courier New', displayName: 'Courier New'},
+      {family: 'Times New Roman', displayName: 'Times New Roman'},
+      {family: 'Arial', displayName: 'Arial'}
+    ];
+
+    const textInput = document.getElementById('text-input');
+    const fontsListDiv = document.getElementById('fonts-list');
+
+    // Fonction pour créer un aperçu pour chaque police
+    function createPreview(text) {
+      fontsListDiv.innerHTML = '';
+      fonts.forEach(font => {
+        const previewDiv = document.createElement('div');
+        previewDiv.classList.add('font-preview');
+
+        const title = document.createElement('h2');
+        title.textContent = font.displayName;
+        previewDiv.appendChild(title);
+
+        const sampleText = document.createElement('p');
+        sampleText.textContent = text || '';
+        sampleText.style.fontFamily = font.family;
+        previewDiv.appendChild(sampleText);
+
+        fontsListDiv.appendChild(previewDiv);
+      });
+    }
+
+    // Initialisation avec le texte par défaut
+    createPreview(textInput.value);
+
+    // Mise à jour lors de la saisie
+    textInput.addEventListener('input', () => {
+      const currentText = textInput.value;
+      createPreview(currentText);
+    });
+  </script>
+</body>
+</html>
